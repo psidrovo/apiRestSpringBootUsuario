@@ -21,8 +21,11 @@ Actualizar las siguientes propiedades
 
 ## Ejecutar
 Usamos mvn para ejecutar
+
 Windows:
+```
 mvnw.cmd spring-boot:run
+```
 
 ## Probar
 Ingresamos en localhost:8080
