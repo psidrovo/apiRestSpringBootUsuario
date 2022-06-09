@@ -25,6 +25,8 @@ Usamos mvn para ejecutar
 Windows:
 ```
 mvnw.cmd spring-boot:run
+
+mvn spring-boot:run
 ```
 
 ## Probar

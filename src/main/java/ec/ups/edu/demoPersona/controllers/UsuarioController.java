@@ -16,6 +16,7 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping()
     public ArrayList<UsuarioModel> obtenerUsuarios(){
         return usuarioService.obtenerUsuarios();
@@ -26,11 +27,13 @@ public class UsuarioController {
         return this.usuarioService.guardarUsuario(usuario);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping( path = "/{id}")
     public Optional<UsuarioModel> obtenerUsuarioPorId(@PathVariable("id") Long id) {
         return this.usuarioService.obtenerPorId(id);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping("/query")
     public ArrayList<UsuarioModel> obtenerUsuarioPorPrioridad(@RequestParam("prioridad") Integer prioridad){
         return this.usuarioService.obtenerPorPrioridad(prioridad);
