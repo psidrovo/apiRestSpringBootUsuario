@@ -22,6 +22,7 @@ public class UsuarioController {
         return usuarioService.obtenerUsuarios();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping()
     public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario){
         return this.usuarioService.guardarUsuario(usuario);
@@ -38,7 +39,7 @@ public class UsuarioController {
     public ArrayList<UsuarioModel> obtenerUsuarioPorPrioridad(@RequestParam("prioridad") Integer prioridad){
         return this.usuarioService.obtenerPorPrioridad(prioridad);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping( path = "/{id}")
     public String eliminarPorId(@PathVariable("id") Long id){
         boolean ok = this.usuarioService.eliminarUsuario(id);
