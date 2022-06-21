@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import ec.ups.edu.demoPersona.models.*;
 import ec.ups.edu.demoPersona.services.UsuarioService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +14,13 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/usuario")
+@Tag(name = "Usuario", description = "Permite el Crud del modelo Usuario")
 public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = "http://0.0.0.0:4200")
+    @Operation(summary = "Obtener usuarios", description = "Busca todos los usuarios para listar", tags = { "Usuario" })
     @GetMapping()
     public ArrayList<UsuarioModel> obtenerUsuarios(){
         return usuarioService.obtenerUsuarios();
