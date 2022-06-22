@@ -15,35 +15,33 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/usuario")
 @Tag(name = "Usuario", description = "Permite el Crud del modelo Usuario")
+@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.DELETE})
 public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @CrossOrigin(origins = "http://0.0.0.0:4200")
     @Operation(summary = "Obtener usuarios", description = "Busca todos los usuarios para listar", tags = { "Usuario" })
     @GetMapping()
     public ArrayList<UsuarioModel> obtenerUsuarios(){
         return usuarioService.obtenerUsuarios();
     }
 
-    @CrossOrigin(origins = "http://0.0.0.0:4200")
+    
     @PostMapping()
     public UsuarioModel guardarUsuario(@RequestBody UsuarioModel usuario){
         return this.usuarioService.guardarUsuario(usuario);
     }
 
-    @CrossOrigin(origins = "http://0.0.0.0:4200")
     @GetMapping( path = "/{id}")
     public Optional<UsuarioModel> obtenerUsuarioPorId(@PathVariable("id") Long id) {
         return this.usuarioService.obtenerPorId(id);
     }
 
-    @CrossOrigin(origins = "http://0.0.0.0:4200")
     @GetMapping("/query")
     public ArrayList<UsuarioModel> obtenerUsuarioPorPrioridad(@RequestParam("prioridad") Integer prioridad){
         return this.usuarioService.obtenerPorPrioridad(prioridad);
     }
-    @CrossOrigin(origins = "http://0.0.0.0:4200")
+
     @DeleteMapping( path = "/{id}")
     public String eliminarPorId(@PathVariable("id") Long id){
         boolean ok = this.usuarioService.eliminarUsuario(id);
